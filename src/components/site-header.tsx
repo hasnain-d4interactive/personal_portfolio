@@ -17,16 +17,18 @@ export function SiteHeader() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-[rgba(8,12,25,0.78)] backdrop-blur-xl">
-      <div className="mx-auto w-full max-w-7xl px-6 py-4 md:px-8">
-        <div className="flex items-center justify-between gap-6">
-          <Link href="/" className="flex items-center gap-3">
-            <span className="flex size-11 items-center justify-center rounded-2xl border border-white/15 bg-[radial-gradient(circle_at_top,_rgba(96,165,250,0.45),_rgba(12,18,38,0.95)_58%)] text-sm font-semibold tracking-[0.3em] text-white">
+    <header className="sticky top-0 z-40 border-b border-[#ead9cd] bg-[rgba(255,250,245,0.88)] backdrop-blur-xl">
+      <div className="mx-auto w-full max-w-7xl px-5 py-4 md:px-8">
+        <div className="flex items-center justify-between gap-4">
+          <Link href="/" className="flex min-w-0 items-center gap-3">
+            <span className="flex size-11 items-center justify-center rounded-[1.35rem] border border-[#e6cdbb] bg-[linear-gradient(135deg,#fff8f0,#f6dfcb)] text-sm font-semibold tracking-[0.28em] text-[#5a3b30] shadow-[0_14px_30px_rgba(168,119,88,0.12)]">
               AH
             </span>
-            <div className="hidden sm:block">
-              <p className="text-sm font-semibold text-white">{siteConfig.name}</p>
-              <p className="text-xs uppercase tracking-[0.28em] text-slate-400">
+            <div className="min-w-0">
+              <p className="truncate text-sm font-semibold text-[#3a2a22]">
+                {siteConfig.name}
+              </p>
+              <p className="truncate text-xs uppercase tracking-[0.24em] text-[#9a7764]">
                 {siteConfig.shortRole}
               </p>
             </div>
@@ -43,8 +45,8 @@ export function SiteHeader() {
                   className={[
                     "rounded-full px-4 py-2 text-sm transition",
                     active
-                      ? "bg-white text-slate-950"
-                      : "text-slate-300 hover:bg-white/[0.08] hover:text-white",
+                      ? "bg-[#3b2d27] text-white shadow-[0_12px_24px_rgba(59,45,39,0.18)]"
+                      : "text-[#6f564a] hover:bg-white hover:text-[#2e211c]",
                   ].join(" ")}
                 >
                   {item.label}
@@ -55,9 +57,9 @@ export function SiteHeader() {
 
           <a
             href={siteConfig.resumeHref}
-            className="rounded-full border border-sky-400/40 bg-sky-400/10 px-4 py-2 text-sm font-medium text-sky-100 transition hover:border-sky-300 hover:bg-sky-400/20"
+            className="hidden rounded-full border border-[#dfb89f] bg-[#fff7f0] px-4 py-2 text-sm font-medium text-[#7a4d38] shadow-[0_12px_30px_rgba(168,119,88,0.08)] transition hover:bg-[#fff0e2] sm:inline-flex"
           >
-            Download Resume
+            Resume
           </a>
         </div>
 
@@ -72,8 +74,8 @@ export function SiteHeader() {
                 className={[
                   "whitespace-nowrap rounded-full px-4 py-2 text-sm transition",
                   active
-                    ? "bg-white text-slate-950"
-                    : "border border-white/10 text-slate-300",
+                    ? "bg-[#3b2d27] text-white"
+                    : "border border-[#e6d4c8] bg-white text-[#6f564a]",
                 ].join(" ")}
               >
                 {item.label}
