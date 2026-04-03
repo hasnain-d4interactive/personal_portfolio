@@ -43,12 +43,14 @@ export default function ContactPage() {
                 ? "noreferrer"
                 : undefined
             }
-            className="rounded-[1.75rem] border border-[#ead8cb] bg-white p-6 shadow-[0_18px_44px_rgba(171,122,95,0.08)] transition hover:-translate-y-1 hover:border-[#ddb89d]"
+            className="min-w-0 rounded-[1.75rem] border border-[#ead8cb] bg-white p-5 shadow-[0_18px_44px_rgba(171,122,95,0.08)] transition hover:-translate-y-1 hover:border-[#ddb89d] sm:p-6"
           >
             <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[#a16d53]">
               {method.label}
             </p>
-            <h2 className="mt-3 text-xl font-semibold text-[#2d211d]">{method.value}</h2>
+            <h2 className="mt-3 break-all text-lg font-semibold text-[#2d211d] sm:text-xl">
+              {method.value}
+            </h2>
             <p className="mt-3 text-sm leading-7 text-[#6e5649]">{method.description}</p>
           </a>
         ))}
