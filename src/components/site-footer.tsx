@@ -4,17 +4,29 @@ import { navItems, siteConfig } from "@/content/site";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-white/10 bg-slate-950/70">
-      <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-12 md:grid-cols-[1.4fr_0.8fr_1fr] md:px-8">
+    <footer className="relative z-10 border-t border-[#ead9cd] bg-[rgba(255,249,242,0.92)]">
+      <div className="mx-auto grid w-full max-w-7xl gap-10 px-5 py-12 md:grid-cols-[1.35fr_0.85fr_1fr] md:px-8">
         <div className="space-y-4">
-          <p className="text-lg font-semibold text-white">{siteConfig.name}</p>
-          <p className="max-w-xl text-sm leading-7 text-slate-300">
-            {siteConfig.summary}
-          </p>
+          <p className="text-lg font-semibold text-[#352721]">{siteConfig.name}</p>
+          <p className="max-w-xl text-sm leading-7 text-[#6b5549]">{siteConfig.summary}</p>
+          <div className="flex flex-wrap gap-3 pt-2">
+            <a
+              href={siteConfig.phoneHref}
+              className="rounded-full border border-[#e4cabc] bg-white px-4 py-2 text-sm text-[#5c4034] shadow-[0_12px_24px_rgba(144,104,79,0.06)] transition hover:bg-[#fff6ee]"
+            >
+              {siteConfig.phone}
+            </a>
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className="rounded-full border border-[#e4cabc] bg-white px-4 py-2 text-sm text-[#5c4034] shadow-[0_12px_24px_rgba(144,104,79,0.06)] transition hover:bg-[#fff6ee]"
+            >
+              Email
+            </a>
+          </div>
         </div>
 
         <div>
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-slate-500">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-[#9d7b69]">
             Explore
           </p>
           <div className="flex flex-wrap gap-3">
@@ -22,7 +34,7 @@ export function SiteFooter() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-full border border-white/10 px-3 py-2 text-sm text-slate-300 transition hover:border-white/20 hover:text-white"
+                className="rounded-full border border-[#e4d3c7] bg-white px-3 py-2 text-sm text-[#6e5649] transition hover:border-[#d9b49f] hover:text-[#352721]"
               >
                 {item.label}
               </Link>
@@ -31,7 +43,7 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-slate-500">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-[#9d7b69]">
             Connect
           </p>
           <div className="space-y-3 text-sm">
@@ -39,7 +51,9 @@ export function SiteFooter() {
               <a
                 key={link.label}
                 href={link.href}
-                className="block text-slate-300 transition hover:text-white"
+                target="_blank"
+                rel="noreferrer"
+                className="block text-[#6b5549] transition hover:text-[#2d211c]"
               >
                 {link.label}
               </a>

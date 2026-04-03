@@ -24,6 +24,10 @@ export type ProjectLink = {
   href: string;
 };
 
+export type SocialLink = ProjectLink & {
+  handle: string;
+};
+
 export type ProjectMedia = {
   src: string;
   alt: string;
@@ -62,17 +66,47 @@ export const siteConfig = {
   shortRole: "Software Developer",
   location: "Rawalpindi, Pakistan",
   email: "ahmedhasnainmughal@gmail.com",
-  phone: "+92-322-5555205",
+  phone: "+92 3225555205",
+  phoneHref: "tel:+923225555205",
+  siteUrl: "https://ahmedhasnain.com",
+  portraitSrc: "/ahmedhasnain.jpeg",
+  portraitAlt:
+    "Portrait of Ahmed Hasnain, full-stack software developer and SaaS product engineer",
   intro:
-    "I build product-focused web experiences for SaaS teams, with a foundation in Laravel and Vue and recent work spanning React, Next.js, and Python-powered AI workflows.",
+    "Ahmed Hasnain is a full-stack software developer building SaaS products with Laravel, React, Vue, Next.js, and Python, with recent work spanning marketing tech, SEO content platforms, and AI-assisted product delivery.",
   summary:
-    "Over the last five years, I have worked across link marketing, hospital software, ecommerce, and SEO content products. My strongest work lives where product thinking, fast iteration, and dependable engineering meet.",
+    "Over the last five years, I have worked across link marketing, hospital software, ecommerce, and SEO content products. My work blends dependable engineering, product ownership, and disciplined AI-assisted workflows to ship faster without losing judgment.",
+  heroTitle:
+    "Ahmed Hasnain builds modern SaaS products with a practical full-stack mindset.",
+  heroTagline:
+    "I design and deliver product-facing software across Laravel, React, Vue, Next.js, and Python. Over the last year, I have used Claude, Codex, and ChatGPT extensively as part of a disciplined workflow for research, debugging, implementation support, and faster SaaS delivery.",
+  aboutSummary:
+    "I enjoy building software where product clarity, technical quality, and execution speed all matter. My background started with Laravel, WordPress, and Vue.js, then grew into SaaS product delivery, analytics workflows, and AI-assisted content systems.",
+  aiWorkflowSummary:
+    "For about one year, I have been using Claude, Codex, and ChatGPT extensively in a structured way to accelerate research, unblock implementation, sharpen debugging, and help deliver SaaS products with more speed and consistency.",
   resumeHref: "/ahmed-hasnain-resume.pdf",
   socialLinks: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/ahmedhasnain/" },
-    { label: "GitHub", href: "https://github.com/hasnain-d4interactive" },
-    { label: "Email", href: "mailto:ahmedhasnainmughal@gmail.com" },
-  ] as ProjectLink[],
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/ahmedhasnain/",
+      handle: "linkedin.com/in/ahmedhasnain",
+    },
+    {
+      label: "GitHub",
+      href: "https://github.com/hasnain-d4interactive",
+      handle: "github.com/hasnain-d4interactive",
+    },
+    {
+      label: "Facebook",
+      href: "https://www.facebook.com/AhmedHasnainMughal/",
+      handle: "facebook.com/AhmedHasnainMughal",
+    },
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/ahmed_hasnain_mughal/",
+      handle: "instagram.com/ahmed_hasnain_mughal",
+    },
+  ] as SocialLink[],
 };
 
 export const navItems: NavItem[] = [
@@ -84,9 +118,9 @@ export const navItems: NavItem[] = [
 ];
 
 export const heroStats: HighlightStat[] = [
-  { value: "5+ years", label: "shipping production web products" },
-  { value: "2 SaaS products", label: "featured case studies" },
-  { value: "Laravel to Python", label: "full-stack range" },
+  { value: "5+ years", label: "shipping production SaaS and web products" },
+  { value: "1 year", label: "using AI tools extensively in delivery workflows" },
+  { value: "Laravel to Python", label: "full-stack execution across product teams" },
 ];
 
 export const strengths = [
@@ -101,9 +135,9 @@ export const strengths = [
       "From backend logic to UI polish, I am comfortable carrying a feature through design alignment, implementation, and production support.",
   },
   {
-    title: "Growth and content systems",
+    title: "AI-assisted execution",
     description:
-      "Recent work has centered on marketing technology, analytics, and AI-assisted content operations for growth teams.",
+      "I use Claude, Codex, and ChatGPT in a practical way to move faster on research, debugging, implementation support, and delivery without outsourcing engineering judgment.",
   },
   {
     title: "Practical collaboration",
@@ -126,14 +160,14 @@ export const skills = [
   "ClickHouse",
   "WordPress",
   "SEO tooling",
-  "Testing",
+  "AI-assisted delivery",
 ];
 
 export const focusAreas = [
   "SaaS product development",
   "Marketing technology",
   "Analytics and reporting surfaces",
-  "AI-assisted content workflows",
+  "AI-assisted product workflows",
   "Scalable backend features",
   "Modern frontend implementation",
 ];
@@ -340,28 +374,41 @@ export const secondaryBuilds = [
 
 export const contactMethods: ContactMethod[] = [
   {
+    label: "Phone",
+    value: siteConfig.phone,
+    href: siteConfig.phoneHref,
+    description:
+      "Direct line for hiring conversations, project discussions, and product collaboration.",
+  },
+  {
     label: "Email",
-    value: "ahmedhasnainmughal@gmail.com",
-    href: "mailto:ahmedhasnainmughal@gmail.com",
-    description: "Best for hiring conversations, freelance work, and direct outreach.",
+    value: siteConfig.email,
+    href: `mailto:${siteConfig.email}`,
+    description: "Best for detailed outreach, role discussions, and longer project context.",
   },
   {
     label: "LinkedIn",
     value: "linkedin.com/in/ahmedhasnain",
     href: "https://www.linkedin.com/in/ahmedhasnain/",
-    description: "Connect for product engineering roles, collaborations, and professional networking.",
+    description: "A strong place to connect for full-time roles, collaborations, and professional networking.",
   },
   {
     label: "GitHub",
     value: "github.com/hasnain-d4interactive",
     href: "https://github.com/hasnain-d4interactive",
-    description: "A supporting link for code visibility and technical background.",
+    description: "Supporting technical profile with repository visibility and developer context.",
   },
   {
-    label: "Location",
-    value: "Rawalpindi, Pakistan",
-    href: "https://maps.google.com/?q=Rawalpindi,Pakistan",
-    description: "Open to remote product work and collaborative software teams.",
+    label: "Facebook",
+    value: "facebook.com/AhmedHasnainMughal",
+    href: "https://www.facebook.com/AhmedHasnainMughal/",
+    description: "Personal profile link available for broader contact and social presence.",
+  },
+  {
+    label: "Instagram",
+    value: "instagram.com/ahmed_hasnain_mughal",
+    href: "https://www.instagram.com/ahmed_hasnain_mughal/",
+    description: "Social profile link that adds a more personal touch to the portfolio presence.",
   },
 ];
 
