@@ -3,7 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { Icon } from "@/components/icon";
 import { PageHero } from "@/components/page-hero";
+import { Reveal } from "@/components/reveal";
 import { getProjectBySlug, projects } from "@/content/site";
 import { createMetadata } from "@/lib/metadata";
 
@@ -41,7 +43,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
 
   return (
-    <div className="space-y-20 md:space-y-24">
+    <div className="space-y-20 md:space-y-28">
       <PageHero
         eyebrow="Case Study"
         title={project.name}
@@ -54,9 +56,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full bg-[#382923] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#5a3b30]"
+                className="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-7 py-4 text-base font-medium text-[var(--text-strong)] transition hover:bg-[var(--accent-hover)]"
               >
                 {link.label}
+                <Icon name="arrow-right" className="size-4" />
               </a>
             ))}
           </>
@@ -64,109 +67,101 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       />
 
       <section className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="rounded-[2rem] border border-[#ead8cb] bg-white p-8 shadow-[0_24px_70px_rgba(171,122,95,0.08)]">
-          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[#a16d53]">
-            Product Overview
-          </p>
-          <h2 className="mt-3 text-3xl font-semibold text-[#2d211d]">
+        <Reveal className="reeni-shell p-8">
+          <p className="reeni-eyebrow text-sm">Product Overview</p>
+          <h2 className="mt-4 text-[3rem] font-bold text-[var(--text-strong)] md:text-[3.5rem]">
             Context before implementation.
           </h2>
-          <p className="mt-5 text-base leading-8 text-[#6e5649]">
+          <p className="mt-5 text-base leading-8 text-[var(--text-muted)]">
             {project.productOverview}
           </p>
-          <p className="mt-5 text-base leading-8 text-[#7e6558]">{project.summary}</p>
-        </div>
-        <div className="overflow-hidden rounded-[2rem] border border-[#ead8cb] bg-white p-4 shadow-[0_24px_70px_rgba(171,122,95,0.08)]">
+          <p className="mt-5 text-base leading-8 text-[var(--text-muted)]">{project.summary}</p>
+        </Reveal>
+
+        <Reveal delay={120} className="reeni-shell overflow-hidden p-5">
           <Image
             src={project.media.src}
             alt={project.media.alt}
             width={1400}
             height={900}
-            className="h-auto w-full rounded-[1.5rem] border border-[#f1ddd1]"
+            className="h-auto w-full rounded-[1.75rem] object-cover"
           />
-        </div>
+        </Reveal>
       </section>
 
       <section className="grid gap-8 lg:grid-cols-2">
-        <div className="rounded-[2rem] border border-[#ead8cb] bg-white p-8 shadow-[0_24px_70px_rgba(171,122,95,0.08)]">
-          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[#a16d53]">
-            Contribution Areas
-          </p>
+        <Reveal className="reeni-shell p-8">
+          <p className="reeni-eyebrow text-sm">Contribution Areas</p>
           <div className="mt-6 space-y-4">
             {project.contributions.map((item) => (
               <div
                 key={item}
-                className="rounded-[1.5rem] border border-[#efe1d6] bg-[#fff9f4] px-5 py-4 text-sm leading-7 text-[#6e5649]"
+                className="rounded-[1.5rem] border border-[var(--border-soft)] bg-[var(--surface-soft)] px-5 py-4 text-base leading-8 text-[var(--text-muted)]"
               >
                 {item}
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
 
-        <div className="rounded-[2rem] border border-[#e4c8b4] bg-[linear-gradient(145deg,#fff8f2,#ffe7d6)] p-8 shadow-[0_24px_70px_rgba(171,122,95,0.12)]">
-          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[#a16d53]">
-            Feature Focus
-          </p>
+        <Reveal delay={120} className="rounded-[2rem] border border-[rgba(20,20,20,0.08)] bg-[var(--accent)] p-8 shadow-[var(--shadow-card)]">
+          <p className="reeni-eyebrow text-sm text-[var(--text-strong)]">Feature Focus</p>
           <div className="mt-6 space-y-4">
             {project.featureHighlights.map((item) => (
               <div
                 key={item}
-                className="rounded-[1.5rem] border border-[#efcfbe] bg-white/75 px-5 py-4 text-sm leading-7 text-[#6a4b3c]"
+                className="rounded-[1.5rem] border border-[rgba(20,20,20,0.08)] bg-[rgba(255,255,255,0.58)] px-5 py-4 text-base leading-8 text-[var(--text-strong)]"
               >
                 {item}
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="rounded-[2rem] border border-[#ead8cb] bg-white p-8 shadow-[0_24px_70px_rgba(171,122,95,0.08)]">
-          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[#a16d53]">
-            Stack
-          </p>
+        <Reveal className="reeni-shell p-8">
+          <p className="reeni-eyebrow text-sm">Stack</p>
           <div className="mt-6 flex flex-wrap gap-3">
             {project.techStack.map((tech) => (
               <span
                 key={tech}
-                className="rounded-full border border-[#ead6c8] bg-[#fff7f0] px-4 py-2 text-sm text-[#6b5447]"
+                className="rounded-full border border-[var(--border-soft)] bg-[var(--surface-soft)] px-4 py-2 text-sm text-[var(--text-muted)]"
               >
                 {tech}
               </span>
             ))}
           </div>
-        </div>
+        </Reveal>
 
-        <div className="rounded-[2rem] border border-[#ead8cb] bg-white p-8 shadow-[0_24px_70px_rgba(171,122,95,0.08)]">
-          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[#a16d53]">
-            Safe Impact Framing
-          </p>
+        <Reveal delay={120} className="reeni-shell p-8">
+          <p className="reeni-eyebrow text-sm">Safe Impact Framing</p>
           <div className="mt-6 space-y-4">
             {project.safeImpactStatements.map((statement) => (
               <div
                 key={statement}
-                className="rounded-[1.5rem] border border-[#efe1d6] bg-[#fff9f4] px-5 py-4 text-sm leading-7 text-[#6e5649]"
+                className="rounded-[1.5rem] border border-[var(--border-soft)] bg-[var(--surface-soft)] px-5 py-4 text-base leading-8 text-[var(--text-muted)]"
               >
                 {statement}
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="flex flex-wrap gap-4">
         <Link
           href="/projects"
-          className="rounded-full border border-[#dfc7ba] bg-white px-5 py-3 text-sm font-medium text-[#4b342a] transition hover:bg-[#fff5ee]"
+          className="inline-flex items-center gap-2 rounded-full border border-[var(--border-soft)] bg-[var(--surface-soft)] px-6 py-4 text-base font-medium text-[var(--text-strong)] transition hover:bg-[var(--surface-primary)]"
         >
           Back to Projects
         </Link>
         <Link
           href="/contact"
-          className="rounded-full bg-[#382923] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#5a3b30]"
+          className="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-6 py-4 text-base font-medium text-[var(--text-strong)] transition hover:bg-[var(--accent-hover)]"
         >
           Get In Touch
+          <Icon name="arrow-right" className="size-4" />
         </Link>
       </section>
     </div>

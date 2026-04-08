@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Ahmed Hasnain — Logo System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:   #0F172A;
+    --slate:  #1E293B;
+    --muted:  #94A3B8;
+    --indigo: #6366F1;
+    --indigo-soft: #818CF8;
+    --white:  #FFFFFF;
+    --border: #1E293B;
+  }
+
+  body {
+    background: #080E1A;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* Header */
+  .page-header {
+    padding: 72px 64px 48px;
+    border-bottom: 1px solid #1E293B;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .page-header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--indigo-soft);
+    margin-bottom: 12px;
+  }
+  .page-header p {
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 380px;
+    line-height: 1.7;
+    font-family: 'DM Mono', monospace;
+  }
+  .palette {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .swatch-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 6px;
+    letter-spacing: 0.5px;
+  }
+  .swatch-group { text-align: center; }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid #1E293B;
+  }
+  .cell {
+    padding: 56px 64px;
+    border-right: 1px solid #1E293B;
+    border-bottom: 1px solid #1E293B;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .cell:nth-child(even) { border-right: none; }
+  .cell-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .cell-sub {
+    font-size: 12px;
+    color: #475569;
+    font-family: 'DM Mono', monospace;
+    margin-top: -16px;
+  }
+  .cell-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 40px 0;
+  }
+  .cell-content svg, .cell-content img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Light bg cell */
+  .bg-light { background: #F8FAFC; }
+  .bg-light .cell-label { color: #94A3B8; }
+  .bg-light .cell-sub   { color: #CBD5E1; }
+
+  /* Dark bg cell */
+  .bg-dark { background: #0F172A; }
+
+  /* Favicon row */
+  .favicon-row {
+    padding: 56px 64px;
+    border-bottom: 1px solid #1E293B;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .favicon-sizes {
+    display: flex;
+    align-items: flex-end;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 40px 0;
+  }
+  .fav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .fav-item svg { display: block; }
+  .fav-sz {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: #475569;
+    letter-spacing: 2px;
+  }
+
+  /* Mark row */
+  .mark-row {
+    padding: 56px 64px;
+    border-bottom: 1px solid #1E293B;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .marks {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    padding: 40px 0;
+    flex-wrap: wrap;
+  }
+  .mark-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .mark-bg-dark {
+    background: #0F172A;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid #1E293B;
+  }
+  .mark-bg-light {
+    background: #F8FAFC;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid #E2E8F0;
+  }
+
+  /* Usage hints */
+  .usage-grid {
+    padding: 56px 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .usage-card {
+    background: #0D1424;
+    border: 1px solid #1E293B;
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .usage-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--indigo-soft);
+    margin-bottom: 10px;
+  }
+  .usage-card p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* Footer */
+  footer {
+    padding: 48px 64px;
+    border-top: 1px solid #1E293B;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer span {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #334155;
+    letter-spacing: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div>
+    <h1>Logo System</h1>
+    <p style="font-size:30px; font-family:'Syne',sans-serif; font-weight:800; color:#fff; margin-bottom:8px; letter-spacing:-1px;">Ahmed Hasnain</p>
+    <p>Brand identity system · Full-Stack Developer<br/>
+    Primary mark · Dark logo · Light logo · Favicon</p>
+  </div>
+  <div>
+    <div class="palette">
+      <div class="swatch-group">
+        <div class="swatch" style="background:#0F172A;"></div>
+        <div class="swatch-label">#0F172A</div>
+      </div>
+      <div class="swatch-group">
+        <div class="swatch" style="background:#1E293B;"></div>
+        <div class="swatch-label">#1E293B</div>
+      </div>
+      <div class="swatch-group">
+        <div class="swatch" style="background:#6366F1;"></div>
+        <div class="swatch-label">#6366F1</div>
+      </div>
+      <div class="swatch-group">
+        <div class="swatch" style="background:#818CF8;"></div>
+        <div class="swatch-label">#818CF8</div>
+      </div>
+      <div class="swatch-group">
+        <div class="swatch" style="background:#FFFFFF; border-color:rgba(255,255,255,0.15);"></div>
+        <div class="swatch-label">#FFFFFF</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- LOGO VARIANTS GRID -->
+<section class="grid">
+
+  <!-- Primary Logo -->
+  <div class="cell bg-dark">
+    <div class="cell-label">Primary Logo</div>
+    <div class="cell-sub">Use on dark / navy backgrounds</div>
+    <div class="cell-content">
+      <svg viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg" width="320">
+        <defs>
+          <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0%" stop-color="#1E293B"/>
+            <stop offset="100%" stop-color="#0F172A"/>
+          </linearGradient>
+        </defs>
+        <rect width="320" height="80" rx="14" fill="url(#bgGrad)"/>
+        <g transform="translate(8,0)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="10" y1="64" x2="25" y2="14" stroke="#FFFFFF" stroke-width="5.5"/>
+          <line x1="25" y1="14" x2="40" y2="64" stroke="#FFFFFF" stroke-width="5.5"/>
+          <line x1="16" y1="43" x2="34" y2="43" stroke="#818CF8" stroke-width="5.5"/>
+          <line x1="47" y1="14" x2="47" y2="64" stroke="#FFFFFF" stroke-width="5.5"/>
+          <line x1="65" y1="14" x2="65" y2="64" stroke="#FFFFFF" stroke-width="5.5"/>
+          <line x1="47" y1="39" x2="65" y2="39" stroke="#818CF8" stroke-width="5.5"/>
+          <circle cx="25" cy="14" r="5" fill="#6366F1" stroke="none"/>
+        </g>
+        <line x1="92" y1="18" x2="92" y2="62" stroke="#334155" stroke-width="1"/>
+        <text x="106" y="38" font-family="'Syne','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" letter-spacing="-0.3">Ahmed Hasnain</text>
+        <text x="106" y="55" font-family="'DM Mono','Courier New',monospace" font-size="9.5" font-weight="400" fill="#94A3B8" letter-spacing="3">FULL-STACK DEVELOPER</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Light Logo -->
+  <div class="cell bg-light">
+    <div class="cell-label" style="color:#94A3B8;">Light Background Logo</div>
+    <div class="cell-sub" style="color:#CBD5E1;">Use on white / light grey surfaces</div>
+    <div class="cell-content">
+      <svg viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg" width="320">
+        <g transform="translate(8,0)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="10" y1="64" x2="25" y2="14" stroke="#0F172A" stroke-width="5.5"/>
+          <line x1="25" y1="14" x2="40" y2="64" stroke="#0F172A" stroke-width="5.5"/>
+          <line x1="16" y1="43" x2="34" y2="43" stroke="#6366F1" stroke-width="5.5"/>
+          <line x1="47" y1="14" x2="47" y2="64" stroke="#0F172A" stroke-width="5.5"/>
+          <line x1="65" y1="14" x2="65" y2="64" stroke="#0F172A" stroke-width="5.5"/>
+          <line x1="47" y1="39" x2="65" y2="39" stroke="#6366F1" stroke-width="5.5"/>
+          <circle cx="25" cy="14" r="5" fill="#6366F1" stroke="none"/>
+        </g>
+        <line x1="92" y1="18" x2="92" y2="62" stroke="#CBD5E1" stroke-width="1"/>
+        <text x="106" y="38" font-family="'Syne','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="700" fill="#0F172A" letter-spacing="-0.3">Ahmed Hasnain</text>
+        <text x="106" y="55" font-family="'DM Mono','Courier New',monospace" font-size="9.5" font-weight="400" fill="#64748B" letter-spacing="3">FULL-STACK DEVELOPER</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Dark Logo (transparent, for dark bg) -->
+  <div class="cell" style="background:#1a2233;">
+    <div class="cell-label">Dark Logo (Transparent)</div>
+    <div class="cell-sub">White mark · no background fill · use anywhere dark</div>
+    <div class="cell-content">
+      <svg viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg" width="320">
+        <g transform="translate(8,0)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="10" y1="64" x2="25" y2="14" stroke="#FFFFFF" stroke-width="5.5"/>
+          <line x1="25" y1="14" x2="40" y2="64" stroke="#FFFFFF" stroke-width="5.5"/>
+          <line x1="16" y1="43" x2="34" y2="43" stroke="#818CF8" stroke-width="5.5"/>
+          <line x1="47" y1="14" x2="47" y2="64" stroke="#FFFFFF" stroke-width="5.5"/>
+          <line x1="65" y1="14" x2="65" y2="64" stroke="#FFFFFF" stroke-width="5.5"/>
+          <line x1="47" y1="39" x2="65" y2="39" stroke="#818CF8" stroke-width="5.5"/>
+          <circle cx="25" cy="14" r="5" fill="#6366F1" stroke="none"/>
+        </g>
+        <line x1="92" y1="18" x2="92" y2="62" stroke="#334155" stroke-width="1"/>
+        <text x="106" y="38" font-family="'Syne','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" letter-spacing="-0.3">Ahmed Hasnain</text>
+        <text x="106" y="55" font-family="'DM Mono','Courier New',monospace" font-size="9.5" font-weight="400" fill="#94A3B8" letter-spacing="3">FULL-STACK DEVELOPER</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Indigo accent preview -->
+  <div class="cell" style="background:#4F46E5;">
+    <div class="cell-label">On Accent Color</div>
+    <div class="cell-sub">Logo works on indigo / brand color surfaces</div>
+    <div class="cell-content">
+      <svg viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg" width="320">
+        <g transform="translate(8,0)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="10" y1="64" x2="25" y2="14" stroke="#FFFFFF" stroke-width="5.5"/>
+          <line x1="25" y1="14" x2="40" y2="64" stroke="#FFFFFF" stroke-width="5.5"/>
+          <line x1="16" y1="43" x2="34" y2="43" stroke="rgba(255,255,255,0.6)" stroke-width="5.5"/>
+          <line x1="47" y1="14" x2="47" y2="64" stroke="#FFFFFF" stroke-width="5.5"/>
+          <line x1="65" y1="14" x2="65" y2="64" stroke="#FFFFFF" stroke-width="5.5"/>
+          <line x1="47" y1="39" x2="65" y2="39" stroke="rgba(255,255,255,0.6)" stroke-width="5.5"/>
+          <circle cx="25" cy="14" r="5" fill="rgba(255,255,255,0.9)" stroke="none"/>
+        </g>
+        <line x1="92" y1="18" x2="92" y2="62" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+        <text x="106" y="38" font-family="'Syne','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" letter-spacing="-0.3">Ahmed Hasnain</text>
+        <text x="106" y="55" font-family="'DM Mono','Courier New',monospace" font-size="9.5" font-weight="400" fill="rgba(255,255,255,0.7)" letter-spacing="3">FULL-STACK DEVELOPER</text>
+      </svg>
+    </div>
+  </div>
+
+</section>
+
+<!-- STANDALONE MARK -->
+<section class="mark-row">
+  <div class="cell-label">Standalone Mark</div>
+  <div class="cell-sub">Use as avatar, app icon, or compact identifier</div>
+  <div class="marks">
+    <div class="mark-item">
+      <div class="mark-bg-dark">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+          <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="10" y1="64" x2="25" y2="14" stroke="#FFFFFF" stroke-width="5.5"/>
+            <line x1="25" y1="14" x2="40" y2="64" stroke="#FFFFFF" stroke-width="5.5"/>
+            <line x1="16" y1="43" x2="34" y2="43" stroke="#818CF8" stroke-width="5.5"/>
+            <line x1="47" y1="14" x2="47" y2="64" stroke="#FFFFFF" stroke-width="5.5"/>
+            <line x1="65" y1="14" x2="65" y2="64" stroke="#FFFFFF" stroke-width="5.5"/>
+            <line x1="47" y1="39" x2="65" y2="39" stroke="#818CF8" stroke-width="5.5"/>
+            <circle cx="25" cy="14" r="5" fill="#6366F1" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <span class="fav-sz">DARK BG</span>
+    </div>
+    <div class="mark-item">
+      <div class="mark-bg-light">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+          <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="10" y1="64" x2="25" y2="14" stroke="#0F172A" stroke-width="5.5"/>
+            <line x1="25" y1="14" x2="40" y2="64" stroke="#0F172A" stroke-width="5.5"/>
+            <line x1="16" y1="43" x2="34" y2="43" stroke="#6366F1" stroke-width="5.5"/>
+            <line x1="47" y1="14" x2="47" y2="64" stroke="#0F172A" stroke-width="5.5"/>
+            <line x1="65" y1="14" x2="65" y2="64" stroke="#0F172A" stroke-width="5.5"/>
+            <line x1="47" y1="39" x2="65" y2="39" stroke="#6366F1" stroke-width="5.5"/>
+            <circle cx="25" cy="14" r="5" fill="#6366F1" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <span class="fav-sz">LIGHT BG</span>
+    </div>
+    <div class="mark-item">
+      <div style="background:#6366F1; padding:24px; border-radius:16px;">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+          <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="10" y1="64" x2="25" y2="14" stroke="#FFFFFF" stroke-width="5.5"/>
+            <line x1="25" y1="14" x2="40" y2="64" stroke="#FFFFFF" stroke-width="5.5"/>
+            <line x1="16" y1="43" x2="34" y2="43" stroke="rgba(255,255,255,0.55)" stroke-width="5.5"/>
+            <line x1="47" y1="14" x2="47" y2="64" stroke="#FFFFFF" stroke-width="5.5"/>
+            <line x1="65" y1="14" x2="65" y2="64" stroke="#FFFFFF" stroke-width="5.5"/>
+            <line x1="47" y1="39" x2="65" y2="39" stroke="rgba(255,255,255,0.55)" stroke-width="5.5"/>
+            <circle cx="25" cy="14" r="5" fill="rgba(255,255,255,0.9)" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <span class="fav-sz">ACCENT BG</span>
+    </div>
+  </div>
+</section>
+
+<!-- FAVICON -->
+<section class="favicon-row">
+  <div class="cell-label">Favicon</div>
+  <div class="cell-sub">Legible at all sizes · use as browser tab icon &amp; app icon</div>
+  <div class="favicon-sizes">
+
+    <div class="fav-item">
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+        <rect width="32" height="32" rx="7" fill="#0F172A"/>
+        <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4"    y1="25.6" x2="10"   y2="5.6"  stroke="#FFFFFF" stroke-width="2.2"/>
+          <line x1="10"   y1="5.6"  x2="16"   y2="25.6" stroke="#FFFFFF" stroke-width="2.2"/>
+          <line x1="6.4"  y1="17.2" x2="13.6" y2="17.2" stroke="#6366F1" stroke-width="2.2"/>
+          <line x1="18.8" y1="5.6"  x2="18.8" y2="25.6" stroke="#FFFFFF" stroke-width="2.2"/>
+          <line x1="26"   y1="5.6"  x2="26"   y2="25.6" stroke="#FFFFFF" stroke-width="2.2"/>
+          <line x1="18.8" y1="15.6" x2="26"   y2="15.6" stroke="#6366F1" stroke-width="2.2"/>
+          <circle cx="10" cy="5.6" r="2" fill="#6366F1" stroke="none"/>
+        </g>
+      </svg>
+      <span class="fav-sz">64 PX</span>
+    </div>
+
+    <div class="fav-item">
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+        <rect width="32" height="32" rx="7" fill="#0F172A"/>
+        <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4"    y1="25.6" x2="10"   y2="5.6"  stroke="#FFFFFF" stroke-width="2.2"/>
+          <line x1="10"   y1="5.6"  x2="16"   y2="25.6" stroke="#FFFFFF" stroke-width="2.2"/>
+          <line x1="6.4"  y1="17.2" x2="13.6" y2="17.2" stroke="#6366F1" stroke-width="2.2"/>
+          <line x1="18.8" y1="5.6"  x2="18.8" y2="25.6" stroke="#FFFFFF" stroke-width="2.2"/>
+          <line x1="26"   y1="5.6"  x2="26"   y2="25.6" stroke="#FFFFFF" stroke-width="2.2"/>
+          <line x1="18.8" y1="15.6" x2="26"   y2="15.6" stroke="#6366F1" stroke-width="2.2"/>
+          <circle cx="10" cy="5.6" r="2" fill="#6366F1" stroke="none"/>
+        </g>
+      </svg>
+      <span class="fav-sz">48 PX</span>
+    </div>
+
+    <div class="fav-item">
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+        <rect width="32" height="32" rx="7" fill="#0F172A"/>
+        <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4"    y1="25.6" x2="10"   y2="5.6"  stroke="#FFFFFF" stroke-width="2.2"/>
+          <line x1="10"   y1="5.6"  x2="16"   y2="25.6" stroke="#FFFFFF" stroke-width="2.2"/>
+          <line x1="6.4"  y1="17.2" x2="13.6" y2="17.2" stroke="#6366F1" stroke-width="2.2"/>
+          <line x1="18.8" y1="5.6"  x2="18.8" y2="25.6" stroke="#FFFFFF" stroke-width="2.2"/>
+          <line x1="26"   y1="5.6"  x2="26"   y2="25.6" stroke="#FFFFFF" stroke-width="2.2"/>
+          <line x1="18.8" y1="15.6" x2="26"   y2="15.6" stroke="#6366F1" stroke-width="2.2"/>
+          <circle cx="10" cy="5.6" r="2" fill="#6366F1" stroke="none"/>
+        </g>
+      </svg>
+      <span class="fav-sz">32 PX</span>
+    </div>
+
+    <div class="fav-item">
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+        <rect width="32" height="32" rx="7" fill="#0F172A"/>
+        <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4"    y1="25.6" x2="10"   y2="5.6"  stroke="#FFFFFF" stroke-width="2.2"/>
+          <line x1="10"   y1="5.6"  x2="16"   y2="25.6" stroke="#FFFFFF" stroke-width="2.2"/>
+          <line x1="6.4"  y1="17.2" x2="13.6" y2="17.2" stroke="#6366F1" stroke-width="2.2"/>
+          <line x1="18.8" y1="5.6"  x2="18.8" y2="25.6" stroke="#FFFFFF" stroke-width="2.2"/>
+          <line x1="26"   y1="5.6"  x2="26"   y2="25.6" stroke="#FFFFFF" stroke-width="2.2"/>
+          <line x1="18.8" y1="15.6" x2="26"   y2="15.6" stroke="#6366F1" stroke-width="2.2"/>
+          <circle cx="10" cy="5.6" r="2" fill="#6366F1" stroke="none"/>
+        </g>
+      </svg>
+      <span class="fav-sz">16 PX</span>
+    </div>
+
+    <!-- Browser tab simulation -->
+    <div class="fav-item" style="margin-left: 40px;">
+      <div style="background:#2D3748; border-radius: 8px 8px 0 0; padding: 8px 20px 8px 10px; display:flex; align-items:center; gap:8px; width:180px;">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+          <rect width="32" height="32" rx="7" fill="#0F172A"/>
+          <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="25.6" x2="10" y2="5.6" stroke="#FFFFFF" stroke-width="2.2"/>
+            <line x1="10" y1="5.6" x2="16" y2="25.6" stroke="#FFFFFF" stroke-width="2.2"/>
+            <line x1="6.4" y1="17.2" x2="13.6" y2="17.2" stroke="#6366F1" stroke-width="2.2"/>
+            <line x1="18.8" y1="5.6" x2="18.8" y2="25.6" stroke="#FFFFFF" stroke-width="2.2"/>
+            <line x1="26" y1="5.6" x2="26" y2="25.6" stroke="#FFFFFF" stroke-width="2.2"/>
+            <line x1="18.8" y1="15.6" x2="26" y2="15.6" stroke="#6366F1" stroke-width="2.2"/>
+            <circle cx="10" cy="5.6" r="2" fill="#6366F1" stroke="none"/>
+          </g>
+        </svg>
+        <span style="font-family:'DM Mono',monospace; font-size:11px; color:#94A3B8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Ahmed Hasnain</span>
+      </div>
+      <div style="background:#1A202C; width:100%; height:2px; border-radius:0;"></div>
+      <span class="fav-sz" style="margin-top:8px;">BROWSER TAB</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- USAGE NOTES -->
+<section class="usage-grid">
+  <div class="usage-card">
+    <h3>Primary Logo</h3>
+    <p>Use on the portfolio hero, email signatures, and LinkedIn banner. The filled background version works anywhere.</p>
+  </div>
+  <div class="usage-card">
+    <h3>Light Logo</h3>
+    <p>Use on white paper, light-mode UI, printed documents, and any surface lighter than #E2E8F0.</p>
+  </div>
+  <div class="usage-card">
+    <h3>Dark Logo</h3>
+    <p>Use as the navbar logo on your portfolio. Drop on any dark or coloured surface without a container.</p>
+  </div>
+  <div class="usage-card">
+    <h3>Mark Only</h3>
+    <p>Profile picture, GitHub avatar, app icon, Slack, and small placements where the wordmark won't read.</p>
+  </div>
+  <div class="usage-card">
+    <h3>Favicon</h3>
+    <p>Drop favicon.svg into your Next.js /app/icon.svg or /public/favicon.svg. Works at 16 – 512 px.</p>
+  </div>
+  <div class="usage-card">
+    <h3>Design Logic</h3>
+    <p>Indigo crossbars bridge the A and H, referencing connection and full-stack breadth. The apex dot is your signature accent.</p>
+  </div>
+</section>
+
+<footer>
+  <span>AHMED HASNAIN · BRAND IDENTITY SYSTEM · 2025</span>
+  <span>SVG · VECTOR · SCALABLE</span>
+</footer>
+
+</body>
+</html>

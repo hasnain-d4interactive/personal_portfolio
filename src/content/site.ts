@@ -69,6 +69,10 @@ export const siteConfig = {
   phone: "+92 3225555205",
   phoneHref: "tel:+923225555205",
   siteUrl: "https://ahmedhasnain.com",
+  logoSrc: "/logos/logo-light.svg",
+  logoPrimarySrc: "/logos/logo-primary.svg",
+  markSrc: "/logos/mark-light.svg",
+  faviconSrc: "/logos/favicon.svg",
   portraitSrc: "/ahmedhasnain.jpeg",
   portraitAlt:
     "Portrait of Ahmed Hasnain, full-stack software developer and SaaS product engineer",

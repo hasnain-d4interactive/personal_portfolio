@@ -17,15 +17,22 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(145deg, #fff7f0 0%, #f3d7c4 100%)",
+          background: "#0F172A",
           borderRadius: "36px",
-          color: "#5a3b30",
-          fontSize: "72px",
-          fontWeight: 700,
-          letterSpacing: "0.24em",
         }}
       >
-        AH
+        <svg width="180" height="180" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="7" fill="#0F172A" />
+          <g fill="none" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="4" y1="25.6" x2="10" y2="5.6" stroke="#FFFFFF" strokeWidth="2.2" />
+            <line x1="10" y1="5.6" x2="16" y2="25.6" stroke="#FFFFFF" strokeWidth="2.2" />
+            <line x1="6.4" y1="17.2" x2="13.6" y2="17.2" stroke="#6366F1" strokeWidth="2.2" />
+            <line x1="18.8" y1="5.6" x2="18.8" y2="25.6" stroke="#FFFFFF" strokeWidth="2.2" />
+            <line x1="26" y1="5.6" x2="26" y2="25.6" stroke="#FFFFFF" strokeWidth="2.2" />
+            <line x1="18.8" y1="15.6" x2="26" y2="15.6" stroke="#6366F1" strokeWidth="2.2" />
+            <circle cx="10" cy="5.6" r="2" fill="#6366F1" stroke="none" />
+          </g>
+        </svg>
       </div>
     ),
     size,

@@ -1,11 +1,32 @@
+import { Icon } from "@/components/icon";
 import type { SocialLink } from "@/content/site";
 
 type SocialLinksProps = {
   links: SocialLink[];
   className?: string;
+  variant?: "icons" | "pills";
 };
 
-export function SocialLinks({ links, className = "" }: SocialLinksProps) {
+function getIconName(label: string): Parameters<typeof Icon>[0]["name"] {
+  switch (label) {
+    case "LinkedIn":
+      return "linkedin";
+    case "GitHub":
+      return "github";
+    case "Facebook":
+      return "facebook";
+    case "Instagram":
+      return "instagram";
+    default:
+      return "arrow-right";
+  }
+}
+
+export function SocialLinks({
+  links,
+  className = "",
+  variant = "icons",
+}: SocialLinksProps) {
   return (
     <div className={`flex flex-wrap gap-3 ${className}`.trim()}>
       {links.map((link) => (
@@ -14,12 +35,22 @@ export function SocialLinks({ links, className = "" }: SocialLinksProps) {
           href={link.href}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex max-w-full items-center gap-2 rounded-full border border-[#dccfc6] bg-white px-4 py-2 text-sm font-medium text-[#3d2e28] shadow-[0_12px_30px_rgba(137,92,72,0.08)] transition hover:-translate-y-0.5 hover:border-[#d4a98f] hover:bg-[#fff9f4]"
+          aria-label={link.label}
+          className={
+            variant === "icons"
+              ? "inline-flex size-[3.25rem] items-center justify-center rounded-full border border-[var(--border-soft)] bg-[var(--surface-soft)] text-[var(--text-strong)] shadow-[var(--shadow-soft)] transition duration-300 hover:-translate-y-1 hover:border-[rgba(20,20,20,0.18)] hover:bg-[var(--accent)]"
+              : "inline-flex max-w-full items-center gap-2 rounded-full border border-[var(--border-soft)] bg-[var(--surface-soft)] px-4 py-2 text-sm font-medium text-[var(--text-strong)] shadow-[var(--shadow-soft)] transition hover:-translate-y-0.5 hover:border-[rgba(20,20,20,0.18)] hover:bg-[var(--surface-primary)]"
+          }
         >
-          <span className="shrink-0">{link.label}</span>
-          <span className="hidden truncate text-xs text-[#8c6d5f] sm:inline">
-            {link.handle}
-          </span>
+          <Icon name={getIconName(link.label)} className="size-[1.15rem]" />
+          {variant === "pills" ? (
+            <>
+              <span className="shrink-0">{link.label}</span>
+              <span className="hidden truncate text-xs text-[var(--text-soft)] sm:inline">
+                {link.handle}
+              </span>
+            </>
+          ) : null}
         </a>
       ))}
     </div>
