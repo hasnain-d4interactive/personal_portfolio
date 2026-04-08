@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Space_Grotesk } from "next/font/google";
+import { Rajdhani, Rubik } from "next/font/google";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -8,13 +8,14 @@ import { absoluteUrl, getBaseUrl } from "@/lib/site";
 
 import "./globals.css";
 
-const headingFont = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const headingFont = Rajdhani({
+  variable: "--font-rajdhani",
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
-const bodyFont = DM_Sans({
-  variable: "--font-dm-sans",
+const bodyFont = Rubik({
+  variable: "--font-rubik",
   subsets: ["latin"],
 });
 
@@ -66,6 +67,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteConfig.siteUrl,
   },
+  icons: {
+    icon: [
+      { url: siteConfig.faviconSrc, type: "image/svg+xml" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: [siteConfig.faviconSrc],
+    apple: [{ url: "/apple-icon", sizes: "180x180", type: "image/png" }],
+  },
   openGraph: {
     title: "Ahmed Hasnain · Full-Stack Software Developer",
     description: siteConfig.intro,
@@ -100,14 +109,13 @@ export default function RootLayout({
       lang="en"
       className={`${headingFont.variable} ${bodyFont.variable} h-full scroll-smooth`}
     >
-      <body className="min-h-full bg-[#fcf6f1] text-[#2b211d] antialiased">
+      <body className="min-h-full bg-[var(--background)] text-[var(--text-strong)] antialiased">
         <div className="relative flex min-h-screen flex-col overflow-hidden">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(248,168,120,0.22),_transparent_28%),radial-gradient(circle_at_top_right,_rgba(247,210,176,0.26),_transparent_26%),linear-gradient(180deg,#fffdf9_0%,#fcf6f1_48%,#f8efe8_100%)]" />
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(166,120,95,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(166,120,95,0.08)_1px,transparent_1px)] bg-[size:128px_128px] opacity-[0.16]" />
-          <div className="pointer-events-none absolute left-[-8rem] top-24 h-72 w-72 rounded-full bg-[#f7d6b5]/50 blur-3xl" />
-          <div className="pointer-events-none absolute right-[-8rem] top-[24rem] h-80 w-80 rounded-full bg-[#ffd4a9]/45 blur-3xl" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[32rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.92),transparent)]" />
+          <div className="pointer-events-none absolute left-[-8rem] top-24 h-72 w-72 rounded-full bg-[var(--accent-soft)] blur-3xl" />
+          <div className="pointer-events-none absolute right-[-8rem] top-[24rem] h-80 w-80 rounded-full bg-[rgba(20,20,20,0.035)] blur-3xl" />
           <SiteHeader />
-          <main className="relative z-10 mx-auto w-full max-w-7xl flex-1 px-5 py-8 md:px-8 md:py-12">
+          <main className="relative z-10 mx-auto w-full max-w-[1320px] flex-1 px-5 py-8 md:px-8 md:py-12 xl:px-12">
             {children}
           </main>
           <SiteFooter />

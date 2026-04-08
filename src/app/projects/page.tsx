@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { PageHero } from "@/components/page-hero";
 import { ProjectCard } from "@/components/project-card";
+import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { projects, secondaryBuilds } from "@/content/site";
 import { createMetadata } from "@/lib/metadata";
@@ -15,7 +16,7 @@ export const metadata: Metadata = createMetadata({
 
 export default function ProjectsPage() {
   return (
-    <div className="space-y-20 md:space-y-24">
+    <div className="space-y-20 md:space-y-28">
       <PageHero
         eyebrow="Projects"
         title="Case studies centered on live products and meaningful engineering work."
@@ -23,11 +24,29 @@ export default function ProjectsPage() {
       />
 
       <section className="space-y-10">
-        <SectionHeading
-          eyebrow="Featured"
-          title="Two products that best represent my current direction."
-          description="These case studies show the transition from marketing technology and analytics-heavy SaaS into AI-assisted content operations."
-        />
+        <Reveal>
+          <SectionHeading
+            eyebrow="Featured"
+            title="Transforming ideas into exceptional product work."
+            description="These case studies show the transition from marketing technology and analytics-heavy SaaS into AI-assisted content operations and modern product delivery."
+            align="center"
+          />
+        </Reveal>
+        <Reveal delay={100} className="flex flex-wrap justify-center gap-3">
+          {["All", "Branding", "Design", "Content writing", "Marketing"].map((item, index) => (
+            <span
+              key={item}
+              className={[
+                "rounded-full px-5 py-3 text-sm font-medium",
+                index === 0
+                  ? "bg-[var(--accent)] text-[var(--text-strong)]"
+                  : "border border-[var(--border-soft)] bg-[var(--surface-soft)] text-[var(--text-strong)]",
+              ].join(" ")}
+            >
+              {item}
+            </span>
+          ))}
+        </Reveal>
         <div className="grid gap-8 lg:grid-cols-2">
           {projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
@@ -35,23 +54,26 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section className="rounded-[2rem] border border-[#ead8cb] bg-white p-8 shadow-[0_24px_70px_rgba(171,122,95,0.08)]">
-        <SectionHeading
-          eyebrow="Additional Work"
-          title="Other engineering highlights from previous roles."
-          description="These are useful signals of range, especially across operational software and business-critical systems."
-        />
+      <section className="reeni-shell p-8 md:p-10">
+        <Reveal>
+          <SectionHeading
+            eyebrow="Additional Work"
+            title="Other engineering highlights from previous roles."
+            description="These give useful evidence of range across operational software, commerce systems, and business-critical delivery."
+          />
+        </Reveal>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
-          {secondaryBuilds.map((build) => (
-            <article
+          {secondaryBuilds.map((build, index) => (
+            <Reveal
               key={build.name}
-              className="rounded-[1.5rem] border border-[#efe1d6] bg-[#fff9f4] p-6"
+              delay={index * 70}
+              className="rounded-[1.8rem] border border-[var(--border-soft)] bg-[var(--surface-soft)] p-6"
             >
-              <h3 className="text-xl font-semibold text-[#2d211d]">{build.name}</h3>
-              <p className="mt-3 text-sm leading-7 text-[#6e5649]">
+              <h3 className="text-[2rem] font-bold text-[var(--text-strong)]">{build.name}</h3>
+              <p className="mt-4 text-base leading-8 text-[var(--text-muted)]">
                 {build.description}
               </p>
-            </article>
+            </Reveal>
           ))}
         </div>
       </section>

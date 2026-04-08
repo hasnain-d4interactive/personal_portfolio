@@ -17,9 +17,8 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background:
-            "linear-gradient(145deg, #fffdf9 0%, #fff5eb 48%, #ffe7d6 100%)",
-          color: "#2d211d",
+          background: "linear-gradient(145deg, #ffffff 0%, #f6f6f4 58%, #efefed 100%)",
+          color: "#141414",
           padding: "64px",
         }}
       >
@@ -31,8 +30,8 @@ export default function OpenGraphImage() {
             width: "320px",
             height: "320px",
             borderRadius: "999px",
-            background: "rgba(249, 181, 126, 0.28)",
-            filter: "blur(10px)",
+            background: "rgba(253, 196, 72, 0.2)",
+            filter: "blur(18px)",
           }}
         />
         <div
@@ -57,18 +56,18 @@ export default function OpenGraphImage() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                background: "linear-gradient(135deg, #fff6ee, #f4d7c2)",
-                border: "1px solid rgba(164, 109, 83, 0.18)",
+                background: "#fdc448",
+                border: "1px solid rgba(20,20,20,0.08)",
                 letterSpacing: "0.3em",
                 fontSize: "24px",
                 fontWeight: 700,
-                color: "#5a3b30",
+                color: "#141414",
               }}
             >
               AH
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <span style={{ fontSize: 18, letterSpacing: "0.3em", color: "#9d725a" }}>
+              <span style={{ fontSize: 18, letterSpacing: "0.3em", color: "#fdc448" }}>
                 FULL-STACK SOFTWARE DEVELOPER
               </span>
               <span style={{ fontSize: 30, fontWeight: 700 }}>{`Ahmed Hasnain`}</span>
@@ -78,10 +77,10 @@ export default function OpenGraphImage() {
             style={{
               padding: "12px 20px",
               borderRadius: "999px",
-              background: "rgba(255,255,255,0.75)",
-              border: "1px solid rgba(219, 187, 166, 0.8)",
+              background: "rgba(255,255,255,0.82)",
+              border: "1px solid rgba(20,20,20,0.1)",
               fontSize: "18px",
-              color: "#6a4b3c",
+              color: "#5f6673",
             }}
           >
             Laravel · React · Vue · Next.js · Python
@@ -98,7 +97,7 @@ export default function OpenGraphImage() {
               gap: "14px",
               flexWrap: "wrap",
               fontSize: "24px",
-              color: "#7b6053",
+              color: "#5f6673",
             }}
           >
             <span>Ahmed Hasnain</span>
