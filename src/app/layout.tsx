@@ -67,12 +67,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteConfig.siteUrl,
   },
+  verification: {
+    google: "FgYgJNhyrhmB-6Zv2dVqJ7X_FxsM-fxEM7NnflV-HO0",
+  },
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "any", type: "image/x-icon" },
+      { url: "/icon", sizes: "512x512", type: "image/png" },
       { url: siteConfig.faviconSrc, type: "image/svg+xml" },
-      { url: "/icon.svg", type: "image/svg+xml" },
     ],
-    shortcut: [siteConfig.faviconSrc],
+    shortcut: ["/favicon.ico"],
     apple: [{ url: "/apple-icon", sizes: "180x180", type: "image/png" }],
   },
   openGraph: {
