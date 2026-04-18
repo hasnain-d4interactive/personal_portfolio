@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Icon } from "@/components/icon";
-import { navItems, siteConfig } from "@/content/site";
+import { navItems, publicSocialLinks, siteConfig } from "@/content/site";
 import { SocialLinks } from "@/components/social-links";
 
 function isActive(pathname: string, href: string) {
@@ -85,7 +85,7 @@ export function SiteHeader() {
           </nav>
 
           <div className="hidden items-center gap-3 xl:flex">
-            <SocialLinks links={siteConfig.socialLinks} />
+            <SocialLinks links={publicSocialLinks} />
             <a
               href={siteConfig.resumeHref}
               className="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-5 py-3 font-medium text-[var(--text-strong)] transition hover:bg-[var(--accent-hover)]"
@@ -143,7 +143,7 @@ export function SiteHeader() {
                 );
               })}
               <div className="pt-3">
-                <SocialLinks links={siteConfig.socialLinks} />
+                <SocialLinks links={publicSocialLinks} />
               </div>
               <a
                 href={siteConfig.resumeHref}

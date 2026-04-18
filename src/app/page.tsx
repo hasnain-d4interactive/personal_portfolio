@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { BlogCard } from "@/components/blog-card";
 import { Icon } from "@/components/icon";
 import { ProjectCard } from "@/components/project-card";
 import { Reveal } from "@/components/reveal";
@@ -11,10 +12,12 @@ import {
   focusAreas,
   heroStats,
   projects,
+  publicSocialLinks,
   siteConfig,
   skills,
   strengths,
 } from "@/content/site";
+import { getLatestPublishedPosts, type BlogPost } from "@/lib/blog";
 
 const stackCards = [
   {
@@ -35,7 +38,11 @@ const stackCards = [
   },
 ];
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const latestPosts = await getLatestPublishedPosts(2);
+
   return (
     <div className="space-y-20 pb-8 md:space-y-28">
       <section className="relative overflow-hidden px-1 pt-4 md:pt-8">
@@ -66,7 +73,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <SocialLinks links={siteConfig.socialLinks} />
+              <SocialLinks links={publicSocialLinks} />
               <a
                 href={siteConfig.resumeHref}
                 className="inline-flex items-center gap-2 rounded-full border border-[var(--border-soft)] bg-[var(--surface-soft)] px-5 py-3 text-sm font-medium text-[var(--text-strong)] transition hover:bg-[var(--surface-primary)]"
@@ -196,6 +203,33 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {latestPosts.length ? (
+        <section className="space-y-10 px-1">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Latest Writing"
+              title="Thoughtful notes from real product work."
+              description="The blog extends the portfolio with writing on shipping SaaS features, AI-assisted execution, debugging habits, and decisions made under delivery pressure."
+              align="center"
+            />
+          </Reveal>
+          <div className="grid gap-8 lg:grid-cols-2">
+            {latestPosts.map((post: BlogPost) => (
+              <BlogCard key={post.slug} post={post} />
+            ))}
+          </div>
+          <Reveal delay={120} className="flex justify-center">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-7 py-4 text-base font-medium text-[var(--text-strong)] transition hover:bg-[var(--accent-hover)]"
+            >
+              View All Articles
+              <Icon name="arrow-right" className="size-4" />
+            </Link>
+          </Reveal>
+        </section>
+      ) : null}
 
       <section className="reeni-shell p-8 md:p-10">
         <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr]">

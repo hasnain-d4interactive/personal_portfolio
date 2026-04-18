@@ -118,6 +118,7 @@ export const navItems: NavItem[] = [
   { href: "/about", label: "About" },
   { href: "/experience", label: "Experience" },
   { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -415,6 +416,17 @@ export const contactMethods: ContactMethod[] = [
     description: "Social profile link that adds a more personal touch to the portfolio presence.",
   },
 ];
+
+export const publicSocialLinks: SocialLink[] = siteConfig.socialLinks.filter(
+  (link) => link.label !== "Facebook" && link.label !== "Instagram",
+);
+
+export const publicContactMethods: ContactMethod[] = contactMethods.filter(
+  (method) =>
+    method.label !== "Phone" &&
+    method.label !== "Facebook" &&
+    method.label !== "Instagram",
+);
 
 export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug);

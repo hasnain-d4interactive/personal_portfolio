@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Icon } from "@/components/icon";
-import { navItems, siteConfig } from "@/content/site";
+import { navItems, publicSocialLinks, siteConfig } from "@/content/site";
 import { SocialLinks } from "@/components/social-links";
 
 export function SiteFooter() {
@@ -19,7 +19,7 @@ export function SiteFooter() {
             className="h-auto w-[180px] sm:w-[210px]"
           />
           <p className="max-w-xs text-base leading-8 text-[var(--text-muted)]">{siteConfig.summary}</p>
-          <SocialLinks links={siteConfig.socialLinks} />
+          <SocialLinks links={publicSocialLinks} />
         </div>
 
         <div>
@@ -44,12 +44,6 @@ export function SiteFooter() {
             Connect
           </p>
           <div className="space-y-4 text-base text-[var(--text-muted)]">
-            <a href={siteConfig.phoneHref} className="flex items-center gap-3 hover:text-[var(--text-strong)]">
-              <span className="inline-flex size-11 items-center justify-center rounded-full border border-[var(--border-soft)] bg-[var(--surface-soft)]">
-                <Icon name="phone" className="size-4" />
-              </span>
-              {siteConfig.phone}
-            </a>
             <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-3 hover:text-[var(--text-strong)]">
               <span className="inline-flex size-11 items-center justify-center rounded-full border border-[var(--border-soft)] bg-[var(--surface-soft)]">
                 <Icon name="email" className="size-4" />
