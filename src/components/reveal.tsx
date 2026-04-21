@@ -13,9 +13,18 @@ export function Reveal({ children, className = "", delay = 0 }: RevealProps) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
     const node = ref.current;
 
     if (!node) {
+      return;
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      setVisible(true);
       return;
     }
 
@@ -26,7 +35,10 @@ export function Reveal({ children, className = "", delay = 0 }: RevealProps) {
           observer.disconnect();
         }
       },
-      { threshold: 0.15 },
+      {
+        threshold: 0,
+        rootMargin: "0px 0px -10% 0px",
+      },
     );
 
     observer.observe(node);
