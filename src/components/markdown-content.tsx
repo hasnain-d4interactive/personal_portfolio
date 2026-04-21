@@ -1,4 +1,5 @@
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 
 type MarkdownContentProps = {
@@ -9,6 +10,7 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
   return (
     <div className="blog-content text-[var(--text-muted)]">
       <ReactMarkdown
+        rehypePlugins={[rehypeRaw]}
         remarkPlugins={[remarkGfm]}
         components={{
           h1: ({ children }) => (
