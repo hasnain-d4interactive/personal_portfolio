@@ -34,13 +34,13 @@ export default function AboutPage() {
         }
         visual={
           <div className="mx-auto max-w-[23rem]">
-            <div className="relative overflow-hidden rounded-[2rem] bg-[#111] p-3 shadow-[0_30px_80px_rgba(20,20,20,0.16)]">
+            <div className="relative overflow-hidden rounded-[2rem] p-3 shadow-[0_30px_80px_rgba(20,20,20,0.16)]">
               <Image
                 src={siteConfig.portraitSrc}
                 alt={siteConfig.portraitAlt}
                 width={400}
                 height={400}
-                className="h-auto w-full rounded-[1.5rem] object-cover grayscale"
+                className="h-auto w-full rounded-[1.5rem] object-cover"
               />
             </div>
           </div>
