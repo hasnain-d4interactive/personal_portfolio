@@ -73,7 +73,7 @@ export const siteConfig = {
   logoPrimarySrc: "/logos/logo-primary.svg",
   markSrc: "/logos/mark-light.svg",
   faviconSrc: "/logos/favicon.svg",
-  portraitSrc: "/ahmedhasnain.jpeg",
+  portraitSrc: "/ahmedhasnain.png",
   portraitAlt:
     "Portrait of Ahmed Hasnain, full-stack software developer and SaaS product engineer",
   intro:

@@ -99,7 +99,7 @@ export default async function Home() {
                   width={800}
                   height={800}
                   priority
-                  className="h-full w-full object-cover grayscale"
+                  className="h-full w-full object-cover"
                 />
               </div>
             </div>
