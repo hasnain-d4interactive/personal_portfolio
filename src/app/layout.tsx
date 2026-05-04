@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Rajdhani, Rubik } from "next/font/google";
+import Script from "next/script";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -18,6 +19,8 @@ const bodyFont = Rubik({
   variable: "--font-rubik",
   subsets: ["latin"],
 });
+
+const GTM_ID = "GTM-5L3ZVP65";
 
 const personStructuredData = {
   "@context": "https://schema.org",
@@ -114,6 +117,21 @@ export default function RootLayout({
       className={`${headingFont.variable} ${bodyFont.variable} h-full scroll-smooth`}
     >
       <body className="min-h-full bg-[var(--background)] text-[var(--text-strong)] antialiased">
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_ID}');`}
+        </Script>
         <div className="relative flex min-h-screen flex-col overflow-hidden">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-[32rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.92),transparent)]" />
           <div className="pointer-events-none absolute left-[-8rem] top-24 h-72 w-72 rounded-full bg-[var(--accent-soft)] blur-3xl" />
